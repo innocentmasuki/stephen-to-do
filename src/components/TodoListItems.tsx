@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {AiFillCloseCircle, AiFillPlusCircle} from "react-icons/ai";
 import {SubmitHandler, useForm} from "react-hook-form";
+import {TbSquareRoundedCheckFilled} from "react-icons/tb";
+import {MdDelete} from "react-icons/md";
 
 export type TodoListItemType = {
     name: string;
@@ -29,7 +31,7 @@ const TodoListItems = ({items, onAddItem}: {
     return (
         <div className={'w-full'}>
             {items.map((item, index) => (
-                <div key={index} className={'w-full flex flex-row  p-2 hover:scale-105 duration-75 group'}>
+                <div key={index} className={'w-full flex gap-4 flex-row  p-2 hover:scale-105 duration-75 group'}>
                     <div
                         className={'bg-white w-full p-4 group-hover:py-6 flex flex-row justify-start items-center gap-3 rounded-xl group-hover:rounded-none shadow-md'}>
                         <div
@@ -48,6 +50,16 @@ const TodoListItems = ({items, onAddItem}: {
                             })}</div>
                         </div>
                     </div>
+                    <button
+                        className={'hidden group-hover:flex text-sm text-white font-bold cursor-pointer px-4 shadow-lg rounded-xl flex-col gap items-center justify-center bg-green-500 opacity-70 hover:opacity-100'}>
+                        <TbSquareRoundedCheckFilled className={'text-2xl'}/>
+                        Complete
+                    </button>
+                    <button
+                        className={'hidden group-hover:flex transition-all text-sm text-white font-bold cursor-pointer px-4 shadow-lg rounded-xl flex-col gap items-center justify-center bg-red-500 opacity-70 hover:opacity-100'}>
+                        <MdDelete className={'text-2xl'}/>
+                        Delete
+                    </button>
 
                 </div>
             ))}
